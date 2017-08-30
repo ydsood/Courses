@@ -1,2 +1,1 @@
-# udemyclasses
-Udemy course repos
+# Courses

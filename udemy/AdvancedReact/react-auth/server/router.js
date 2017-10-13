@@ -1,5 +1,5 @@
 const Authentication = require('./controllers/authentication');
-//requiring the service here executes the service code and ensures 
+//requiring the service here executes the service code and ensures
 //passport is configured to use jwt and local authentication strategies
 const passportService = require('./services/passport');
 const passport = require('passport');

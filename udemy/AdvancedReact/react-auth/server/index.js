@@ -1,16 +1,18 @@
 //Starting pointof application
-const express = require('express');
-const http = require('http');
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const mongoose = require('mongoose');
-const router = require('./router');
+const express = require("express");
+const http = require("http");
+const bodyParser = require("body-parser");
+const morgan = require("morgan");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const router = require("./router");
+
 const app = express();
 
 /*---------*/
 //DB setup//
 /*---------*/
-mongoose.connect('mongodb://localhost:auth/auth');
+mongoose.connect("mongodb://localhost:auth/auth");
 //
 
 /*---------*/
@@ -19,10 +21,13 @@ mongoose.connect('mongodb://localhost:auth/auth');
 //Contains Express application setup
 
 //Logging
-app.use(morgan('combined'));
+app.use(morgan("combined"));
+
+//Cross origin resource sharing
+app.use(cors());
 
 //Data parser
-app.use(bodyParser.json({ type: '*/*'}));
+app.use(bodyParser.json({ type: "*/*" }));
 
 //Route all requests
 router(app);
@@ -34,4 +39,4 @@ router(app);
 const port = process.env.PORT || 3090;
 const server = http.createServer(app);
 server.listen(port);
-console.log('Server listening on:', port);
+console.log("Server listening on:", port);
